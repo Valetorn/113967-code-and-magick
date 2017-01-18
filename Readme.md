@@ -1,6 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Владислав Дурин](https://up.htmlacademy.ru/javascript/8/user/113967).
+
 * Наставник: [Егор Огарков]
 (https://htmlacademy.ru/profile/id58697).
 
