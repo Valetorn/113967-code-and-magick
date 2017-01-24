@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 function drawCloud (ctx, x, y, width, height) {
 	ctx.fillRect(x, y, width, height);
@@ -55,6 +55,4 @@ function renderStatistics(ctx, names, times) {
 	}
 };
 
-var canvas = document.querySelector('canvas');
-
-window.renderStatistics(canvas.getContext('2d'), ['Вы', 'Михаил', 'Иван', 'Константин'], [25.04, 50.02, 12.07, 35.08]);
+window.renderStatistics();
