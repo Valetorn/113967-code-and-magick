@@ -11,7 +11,7 @@ function renderStatistics(ctx, names, times) {
 	ctx.fillStyle = '#ffffff';
 	drawCloud(ctx, 100, 10, 420, 270);
 	
-  ctx.font = '16px PT Mon';
+  ctx.font = '16px PT Mono';
 	ctx.fillStyle = '#000000'
   ctx.fillText('Ура вы победили', 120, 45);
   ctx.fillText('Список результатов: ', 120, 65);
@@ -31,7 +31,7 @@ function renderStatistics(ctx, names, times) {
 	var histoX = 140;
 	var histoHeight = 150;
 	var histoWidth = 40;
-	var histoMargin = 50;
+	var histoMargin = 50 + histoWidth;
 	var step = histoHeight / max;
 	
 	for (var i = 0; i < times.length; i++) {
@@ -45,7 +45,7 @@ function renderStatistics(ctx, names, times) {
 		if (name === 'Вы') {
 			ctx.fillStyle = 'rgba(255, 0, 0, 1)';
 		} else {
-			ctx.fillStyle = ['rgba(0,0', ((Math.random() * 5) * 50).toFixed(0), ',', (Math.random()).toFixed(1), ')'].join('');
+			ctx.fillStyle = ['rgba(0,0,', ((Math.random() * 5) * 50).toFixed(0), ',', (Math.random()).toFixed(1), ')'].join('');
 		}
 		
 		ctx.fillRect(histoX + histoMargin * i, 100 + histoHeight - height, histoWidth, height);
