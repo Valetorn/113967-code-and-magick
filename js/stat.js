@@ -26,7 +26,6 @@ window.renderStatistics = function (ctx, names, times) {
     if (times[i] < min) {
       min = times[i];
     }
-    
     var histoX = 140;
     var histoHeight = 150;
     var histoWidth = 40;
