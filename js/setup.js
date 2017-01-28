@@ -29,6 +29,6 @@ setupFireballWrap.addEventListener('click', function () {
   var fireballWrapColor1 = Math.floor(Math.random() * fireballWrapColors.length);
   var fireballWrapColor2 = Math.floor(Math.random() * 3);
   var position = Math.floor(Math.random() * gradePosition.length);
-  var grade = ['linear-gradient(' + gradePosition[position] + ', ' + fireballWrapColors[fireballWrapColor1] + ', ' + fireballWrapColors[fireballWrapColor2] + ')'].join('');
+  var grade = 'linear-gradient(' + gradePosition[position] + ', ' + fireballWrapColors[fireballWrapColor1] + ', ' + fireballWrapColors[fireballWrapColor2] + ')';
   setupFireballWrap.style.background = grade;
 });
