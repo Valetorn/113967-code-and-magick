@@ -9,7 +9,6 @@ var wizardEyes = document.getElementById('wizard-eyes');
 var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 var setupFireballWrap = setup.querySelector('.setup-fireball-wrap');
 var fireballWrapColors = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
-var gradePosition = ['45deg', '90deg', '-45deg', '-90deg'];
 
 setupOpen.addEventListener('click', function () {
   setup.classList.remove('invisible');
@@ -26,9 +25,6 @@ wizardEyes.addEventListener('click', function () {
   wizardEyes.style.fill = eyesColors[eyesColor];
 });
 setupFireballWrap.addEventListener('click', function () {
-  var fireballWrapColor1 = Math.floor(Math.random() * fireballWrapColors.length);
-  var fireballWrapColor2 = Math.floor(Math.random() * 3);
-  var position = Math.floor(Math.random() * gradePosition.length);
-  var grade = 'linear-gradient(' + gradePosition[position] + ', ' + fireballWrapColors[fireballWrapColor1] + ', ' + fireballWrapColors[fireballWrapColor2] + ')';
-  setupFireballWrap.style.background = grade;
+  var fireballWrapColor = Math.floor(Math.random() * fireballWrapColors.length);
+  setupFireballWrap.style.backgroundColor = fireballWrapColors[fireballWrapColor];
 });
