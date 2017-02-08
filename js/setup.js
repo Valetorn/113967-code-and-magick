@@ -22,26 +22,22 @@ function activateSetup(evt) {
 function setupKeydownHandler(evt) {
   if (evt.keyCode === ESCAPE_KEY_CODE) {
     setup.classList.add('invisible');
-    changeAriaAttributeToClose(setupOpenIcon, setupClose);
+    changeAriaAttribute(false);
   }
 }
-function changeAriaAttributeToOpen(elem1, elem2) {
-  elem1.setAttribute('aria-pressed', 'true');
-  elem2.setAttribute('aria-pressed', 'false');
-}
-function changeAriaAttributeToClose(elem1, elem2) {
-  elem2.setAttribute('aria-pressed', 'true');
-  elem1.setAttribute('aria-pressed', 'false');
+function changeAriaAttribute(isOpen) {
+  setupOpenIcon.setAttribute('aria-pressed', isOpen);
+  setupClose.setAttribute('aria-pressed', !isOpen);
 }
 function showSetupElement(evt) {
   setup.classList.remove('invisible');
   document.addEventListener('keydown', setupKeydownHandler);
-  changeAriaAttributeToOpen(setupOpenIcon, setupClose);
+  changeAriaAttribute(true);
 }
 function hideSetupElement(evt) {
   setup.classList.add('invisible');
   document.removeEventListener('keydown', setupKeydownHandler);
-  changeAriaAttributeToClose(setupOpenIcon, setupClose);
+  changeAriaAttribute(false);
 }
 function getColor(wizardElement, elementColors) {
   colorIndex++;
@@ -67,11 +63,13 @@ setupClose.addEventListener('keydown', function (evt) {
     hideSetupElement();
   }
 });
-setupSubmit.addEventListener('click', function () {
+setupSubmit.addEventListener('click', function (evt) {
+  evt.preventDefault();
   hideSetupElement();
 });
 setupSubmit.addEventListener('keydown', function (evt) {
   if (activateSetup(evt)) {
+    evt.preventDefault();
     hideSetupElement();
   }
 });
