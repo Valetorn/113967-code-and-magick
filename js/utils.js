@@ -1,15 +1,14 @@
 'use strict';
 
 window.utils = {
-  getRandomElement: function(array) {
-    var randomElement = Math.floor(Math.random() * array.length);
-    return array[randomElement];
+  getRandomElement: function (array) {
+    return array[Math.floor(Math.random() * array.length)];
   },
-  getRandomElementExcept: function(array, arrayElement) {
-    var newElement = arrayElement;
-    while (newElement === arrayElement) {
-      newElement = utils.getRandomElement(array);
-      return array[newElement];
-    }
+  getRandomElementExcept: function (array, currentArrayElement) {
+    var newElement;
+    do {
+      newElement = this.getRandomElement(array);
+    } while (newElement === currentArrayElement);
+    return newElement;
   }
 };

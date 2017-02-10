@@ -8,7 +8,6 @@ var setupSubmit = setup.querySelector('.setup-submit');
 var wizardCoat = document.getElementById('wizard-coat');
 var wizardEyes = document.getElementById('wizard-eyes');
 var setupFireballWrap = setup.querySelector('.setup-fireball-wrap');
-var colorIndex = 0;
 
 var coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
@@ -28,6 +27,9 @@ function setupKeydownHandler(evt) {
 }
 function changeAriaAttribute(isOpen) {
   setupOpenIcon.setAttribute('aria-pressed', isOpen);
+  wizardCoat.setAttribute('aria-pressed', isOpen);
+  wizardEyes.setAttribute('aria-pressed', isOpen);
+  setupFireballWrap.setAttribute('aria-pressed', isOpen);
   setupClose.setAttribute('aria-pressed', !isOpen);
 }
 function showSetupElement(evt) {
@@ -39,13 +41,6 @@ function hideSetupElement(evt) {
   setup.classList.add('invisible');
   document.removeEventListener('keydown', setupKeydownHandler);
   changeAriaAttribute(false);
-}
-function getColor(wizardElement, elementColors) {
-  colorIndex++;
-  if (colorIndex > elementColors.length - 1) {
-    colorIndex = 0;
-  }
-  wizardElement.style.fill = elementColors[colorIndex];
 }
 
 setupOpen.addEventListener('click', function () {
@@ -74,11 +69,7 @@ setupSubmit.addEventListener('keydown', function (evt) {
     hideSetupElement();
   }
 });
-wizardCoat.addEventListener('click', function () {
-  getColor(wizardCoat, coatColors);
-});
-wizardEyes.addEventListener('click', function () {
-  getColor(wizardEyes, eyesColors);
-});
 
 window.colorizeElement(setupFireballWrap, fireballWrapColors, 'backgroundColor');
+window.colorizeElement(wizardCoat, coatColors, 'fill');
+window.colorizeElement(wizardEyes, eyesColors, 'fill');

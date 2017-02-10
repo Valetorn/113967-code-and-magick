@@ -1,11 +1,15 @@
 'use strict';
 
-window.colorizeElement = function(element, colors, property) {
-  var currentColor = colors[0];
-  element.addEventListener('click', function () {
-    window.utils.getRandomElementExcept(colors, currentColor);
-    currentColor = window.utils.getRandomElementExcept();
-    console.log(currentColor);
+window.colorizeElement = function (element, colors, property) {
+  var currentColor = element.style[property];
+  function changeColor() {
+    currentColor = window.utils.getRandomElementExcept(colors, currentColor);
     element.style[property] = currentColor;
+  }
+  element.addEventListener('click', changeColor);
+  element.addEventListener('keydown', function (evt) {
+    if (window.activateSetup(evt)) {
+      changeColor();
+    }
   });
-}
+};
