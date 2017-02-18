@@ -15,3 +15,4 @@ window.colorizeElement = (function () {
     });
   };
 })();
+
