@@ -17,7 +17,7 @@ window.enableSetup = (function () {
     document.querySelector('.setup-close').setAttribute('aria-pressed', !isOpen);
   };
   return {
-    showSetupElement: function (evt) {
+    showSetupElement: function () {
       setup.classList.remove('invisible');
       document.addEventListener('keydown', setupKeydownHandler);
       changeAriaAttribute(true);
