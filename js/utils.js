@@ -22,6 +22,12 @@ window.utils = (function () {
     },
     isDeactivationEvent: function (evt) {
       return isKeyboardEvent(evt) && evt.keyCode === ESCAPE_KEY_CODE;
+    },
+    fillElement: function (element, color) {
+      element.style.fill = color;
+    },
+    changeBackground: function (element, color) {
+      element.style.backgroundColor = color;
     }
   };
 })();
