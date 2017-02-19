@@ -3,7 +3,6 @@
 window.enableSetup = (function () {
   var setup = document.querySelector('.setup');
   var setupOpenIcon = document.querySelector('.setup-open-icon');
-  
   var setupKeydownHandler = function (evt) {
     if (window.utils.isDeactivationEvent(evt)) {
       setup.classList.add('invisible');
@@ -12,10 +11,10 @@ window.enableSetup = (function () {
   };
   var changeAriaAttribute = function (isOpen) {
     setupOpenIcon.setAttribute('aria-pressed', isOpen);
-    wizardCoat.setAttribute('aria-pressed', isOpen);
-    wizardEyes.setAttribute('aria-pressed', isOpen);
-    setupFireballWrap.setAttribute('aria-pressed', isOpen);
-    setup.querySelector('.setup-close').setAttribute('aria-pressed', !isOpen);
+    document.getElementById('wizard-coat').setAttribute('aria-pressed', isOpen);
+    document.getElementById('wizard-eyes').setAttribute('aria-pressed', isOpen);
+    document.querySelector('.setup-fireball-wrap').setAttribute('aria-pressed', isOpen);
+    document.querySelector('.setup-close').setAttribute('aria-pressed', !isOpen);
   };
   return {
     showSetupElement: function (evt) {
@@ -27,11 +26,10 @@ window.enableSetup = (function () {
       setup.classList.add('invisible');
       document.removeEventListener('keydown', setupKeydownHandler);
       changeAriaAttribute(false);
-      
       if (typeof this.callback === 'function') {
         this.callback();
       }
     },
     callback: null
-  };  
+  };
 })();
