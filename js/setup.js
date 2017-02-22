@@ -1,5 +1,6 @@
 'use strict';
 
+var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = document.querySelector('.setup-close');
 var setupSubmit = document.querySelector('.setup-submit');
@@ -7,16 +8,29 @@ var wizardCoat = document.getElementById('wizard-coat');
 var wizardEyes = document.getElementById('wizard-eyes');
 var setupFireballWrap = document.querySelector('.setup-fireball-wrap');
 
+var DATA_URL = 'https://intensive-javascript-server-myophkugvq.now.sh/code-and-magick/data';
+
 var coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 var fireballWrapColors = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
+var loadWizards = function () {
+  window.load(DATA_URL, function (data) {
+    window.render(data);
+  }, function (err) {
+    window.console.log(err);
+    setup.innerHTML = err;
+  });
+};
+
 setupOpen.addEventListener('click', function () {
   window.enableSetup.showSetupElement();
+  loadWizards();
 });
 setupOpen.addEventListener('keydown', function (evt) {
   if (window.utils.isActivationEvent(evt)) {
     window.enableSetup.showSetupElement();
+    loadWizards();
     window.enableSetup.callback = (function () {
       document.querySelector('.setup-open-icon').focus();
     });
