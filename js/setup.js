@@ -14,7 +14,7 @@ var coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)
 var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 var fireballWrapColors = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
-var loadWizards = function () {
+window.loadWizards = function () {
   window.load(DATA_URL, function (data) {
     window.render(data);
   }, function (err) {
@@ -25,12 +25,20 @@ var loadWizards = function () {
 
 setupOpen.addEventListener('click', function () {
   window.enableSetup.showSetupElement();
-  loadWizards();
+  window.load(DATA_URL, function (data) {
+  }, function (err) {
+    window.console.log(err);
+    setup.innerHTML = err;
+  });
 });
 setupOpen.addEventListener('keydown', function (evt) {
   if (window.utils.isActivationEvent(evt)) {
     window.enableSetup.showSetupElement();
-    loadWizards();
+    window.load(DATA_URL, function (data) {
+    }, function (err) {
+      window.console.log(err);
+      setup.innerHTML = err;
+    });
     window.enableSetup.callback = (function () {
       document.querySelector('.setup-open-icon').focus();
     });
