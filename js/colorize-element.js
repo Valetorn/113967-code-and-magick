@@ -1,6 +1,7 @@
 'use strict';
 
 window.colorizeElement = (function () {
+  var timer = null;
   return function (element, colors, callback) {
     var currentColor = colors[0];
     var changeColor = function () {
@@ -9,7 +10,8 @@ window.colorizeElement = (function () {
     };
     var addNewMagick = function () {
       changeColor();
-      setTimeout(window.loadWizards, 5000);
+      clearTimeout(timer);
+      timer = setTimeout(window.loadWizards, 5000);
     };
     element.addEventListener('click', function () {
       addNewMagick();
