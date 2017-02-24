@@ -1,6 +1,5 @@
 'use strict';
 
-var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = document.querySelector('.setup-close');
 var setupSubmit = document.querySelector('.setup-submit');
@@ -17,28 +16,23 @@ var fireballWrapColors = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848']
 window.loadWizards = function () {
   window.load(DATA_URL, function (data) {
     window.render(data);
-  }, function (err) {
-    window.console.log(err);
-    setup.innerHTML = err;
   });
+};
+var showData = function () {
+  window.enableSetup.showSetupElement();
+  window.loadWizards();
+};
+var onClickSetupSubmit = function (evt) {
+  evt.preventDefault();
+  window.enableSetup.hideSetupElement();
 };
 
 setupOpen.addEventListener('click', function () {
-  window.enableSetup.showSetupElement();
-  window.load(DATA_URL, function (data) {
-  }, function (err) {
-    window.console.log(err);
-    setup.innerHTML = err;
-  });
+  showData();
 });
 setupOpen.addEventListener('keydown', function (evt) {
   if (window.utils.isActivationEvent(evt)) {
-    window.enableSetup.showSetupElement();
-    window.load(DATA_URL, function (data) {
-    }, function (err) {
-      window.console.log(err);
-      setup.innerHTML = err;
-    });
+    showData();
     window.enableSetup.callback = (function () {
       document.querySelector('.setup-open-icon').focus();
     });
@@ -53,13 +47,11 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 setupSubmit.addEventListener('click', function (evt) {
-  evt.preventDefault();
-  window.enableSetup.hideSetupElement();
+  onClickSetupSubmit(evt);
 });
 setupSubmit.addEventListener('keydown', function (evt) {
   if (window.utils.isActivationEvent(evt)) {
-    evt.preventDefault();
-    window.enableSetup.hideSetupElement();
+    onClickSetupSubmit(evt);
   }
 });
 
